@@ -1,0 +1,40 @@
+﻿.navbar-nav > li{
+  padding-left:10px;
+  padding-right:10px;
+}
+
+   .navbar-nav > li:hover {
+        background-color:#818182;
+    }
+
+.nav-item li.active {
+    border: solid 1px;
+    border-radius: 0.25em;
+    border-bottom: none;
+}
+
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 2px solid;
+}
+
+.login-nav-margin {
+    margin-right: 20px; 
+}
+
+.box-shadow {
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+}
+
+
+@media (min-width: 1200px) {
+    .navbar-brand,
+    .navbar-nav li a {
+        line-height: 70px;
+        height: 70px;
+        padding-top: 0;
+        font-size: 1.2em;
+    }
+}

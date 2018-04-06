@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html ng-app="catalogEditor">
+    <head runat="server">
+        <meta name="viewport" content="width=device-width" />
+        <meta name="theme-color" content="#6BBAA7">
+        <title>Home</title>
+        <link   rel="stylesheet" 
+                href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+                integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+                crossorigin="anonymous">
+        <link href="../../css/bs4-custom.css" rel="stylesheet" />
+        <link href="/css/custom.css" rel="stylesheet" />
+        <link href="../../css/ngToast.min.css" rel="stylesheet" />
+        <link href="../../css/xeditable.css" rel="stylesheet" />
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" ng-controller="navController as nav">
+
+            <a class="navbar-brand" ui-sref="">Pathology Lab Logo</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="navbarNavDropdown" class="navbar-collapse collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link button" 
+                            href="" 
+                            ng-click="changeStateTo('home')">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" 
+                            href="" 
+                            ng-click="changeStateTo('additional-info')">Additional Information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" 
+                            href="" 
+                            ng-click="changeStateTo('spec-info')">Specimen Information</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" ui-sref="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                        </div>
+                    </li>
+
+                </ul>
+
+                <ul class="navbar-nav login-nav-margin">
+                    <li class="nav-item dropdown ng-cloak" ng-show="authStatus.currentUser != null && authStatus.authError != true && authStatus.authComplete == true">
+                        <a ui-sref="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{authStatus.currentUser}} <span class="caret"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" ng-bind="'Logout - '+authStatus.currentUser" ng-click="logout()" ui-sref=""></a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                        </div>
+                    </li>
+                    <li class="nav-item" ng-if="authStatus.currentUser == null || authStatus.authError">
+                        <a class="nav-link" 
+                            href="" 
+                            ng-click="changeStateTo('login')">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" 
+                            ng-if="authStatus.currentUser == null || authStatus.authError"
+                            href=""
+                            ng-click="changeStateTo('request-access')">Request Access</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+
+
+        <div id="searchArea" class="container-fluid divide-nav" ng-controller="searchController">
+            
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 align-items-center">
+
+                            <typeahead items="items" 
+                                prompt="Search for a test here"
+                                title="test_name"
+                                subtitle="test_catalog_cd"
+                                synonyms="synonyms"
+                                model="test_name"
+                                on-select="onItemSelected()"
+                                selecteditemcode ="selectedCatalogCd"
+                                searchstring ="searchString"
+                                on-search-click ="onClickSearch()"
+                             />
+                            
+                        </div>
+                    </div>
+                </div>
+                <!--container-fluid-->
+            
+        </div>
+        <hr />
+        <div class="container-fluid">
+            <ui-view></ui-view>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-sanitize.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-resource.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-animate.min.js"></script>
+        
+        
+        <script src="../../js/app.js"></script>
+        <script src="../../js/config.js"></script>
+
+        <script src="../../js/plugins/angular-ui-router.js"></script>
+        <script src="../../js/plugins/statehelper.js"></script>
+        <script src="../../js/plugins/jsonQ.js"></script>
+        <script src="../../js/plugins/ngToast.js"></script>
+        <script src="../../js/plugins/xeditable.js"></script>
+        <script src="../../js/plugins/all.js"></script>
+        
+        <script src="../../js/controllers/home.js"></script>
+        <script src="../../js/controllers/search.js"></script>
+        <script src="../../js/controllers/login.js"></script>
+        <script src="../../js/controllers/details.js"></script>
+        <script src="../../js/controllers/editDetails.js"></script>
+        <script src="../../js/controllers/nav.js"></script>
+        <script src="../../js/controllers/editSection.js"></script>
+        <script src="../../js/controllers/textEditController.js"></script>
+
+        <script src="../../js/services/DataFactory.js"></script>
+        <script src="../../js/services/Authentication.js"></script>
+        <script src="../../js/services/AppSupport.js"></script>
+        <script src="../../js/services/displayHelper.js"></script>
+
+        <script src="../../js/components.js"></script>
+
+        <script src="../../js/lib/clicklinkDirective.js"></script>
+        <script src="../../js/lib/typeaheadDirective.js"></script>
+        <script src="../../js/lib/constants.js"></script>
+        <script src="../../js/lib/textEditDirective.js"></script>
+
+
+        <script 
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" 
+            crossorigin="anonymous">
+        </script>
+        <script 
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" 
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" 
+            crossorigin="anonymous">
+        </script>
+        <script 
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" 
+            crossorigin="anonymous">
+        </script>
+
+
+    </body>
+</html>
+

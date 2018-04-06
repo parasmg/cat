@@ -1,0 +1,29 @@
+[{
+    "test_id": 1,
+    "test_catalog_cd": 16268,
+    "section_id": 1,
+    "section_display_sequence": 1,
+    "section_name": "test_info",
+    "section_display_name": "Test Information"
+}, {
+    "test_id": 1,
+    "test_catalog_cd": 16268,
+    "section_id": 2,
+    "section_display_sequence": 2,
+    "section_name": "specimen_info",
+    "section_display_name": "Specimen and Collection Information"
+}, {
+    "test_id": 1,
+    "test_catalog_cd": 16268,
+    "section_id": 3,
+    "section_display_sequence": 3,
+    "section_name": "result_info",
+    "section_display_name": "Result Information"
+}, {
+    "test_id": 1,
+    "test_catalog_cd": 16268,
+    "section_id": 4,
+    "section_display_sequence": 4,
+    "section_name": "storage_info",
+    "section_display_name": "Specimen Storage and Transportation"
+}]

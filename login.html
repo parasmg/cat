@@ -1,0 +1,65 @@
+﻿<div class="container">
+
+    
+    <form name="myForm" class="form-signin" ng-submit="login()">
+        
+        <fieldset ng-show="authStatus.currentUser == null || authStatus.authError">
+            <div class="form-label-group">
+                <label for="inputUser" class="sr-only">Username</label>
+                <input name="inputUser" class="form-control" placeholder="Username"
+                       ng-model="user.username" ng-required="true">
+            </div>
+            <div class="form-label-group">
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" class="form-control" name="inputPassword" placeholder="Password"
+                       ng-model="user.password" ng-required="true">
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary btn-block"
+                    ng-disabled="myForm.$invalid">
+                Login
+            </button>
+        </fieldset>
+
+
+    <hr class="featurette-divider">
+        <div class="row">
+            <div ng-show="myForm.inputPassword.$invalid && myForm.inputPassword.$touched" class="alert alert-danger" role="alert">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error:</span>
+                Password is Required
+            </div>
+        </div>
+        <div class="row" ng-show="authStatus.authComplete">
+            <div class="column">
+                <div class="alert alert-success alert-dismissible" role="alert" ng-hide="authStatus.authError">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div ng-bind="authStatus.authMessage"></div>
+                </div>
+                <div class="alert alert-danger alert-dismissible"
+                     role="alert"
+                     ng-show="authStatus.authError"
+                     ng-bind="authStatus.authMessage">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row" ng-show="authStatus.authComplete == false">
+            <div class="column">
+                <div class="alert alert-info alert-dismissible" 
+                     role="alert"
+                     ng-bind="authStatus.authMessage">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+
+</div> <!-- /container -->

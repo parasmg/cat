@@ -1,0 +1,37 @@
+﻿{
+	"type": "generic",
+	"test_info": [
+		"test_catalog_cd",
+		"test_name",
+		"performing_lab",
+		"internal_code",
+		"synonyms",		
+		"order_includes",
+		"tat",
+		"additional_interp_info",
+		"methodlogy",
+		"cpt_code"
+	],
+	"result_info": [
+		"reference_interval",
+		"interpretative_information",
+		"critical_range"
+	],
+	"specimen_&_collection_info": [
+		"specimen_name",
+		"container_type",
+		"container_url",
+		"special_handling",
+		"patient_specimen_prep",
+		"specimen_volume"
+	],
+	"specimen_storage_and_transport_information": [ 
+		"storage_and_transport",
+		"deliver_to_address"
+	],
+	"meta_data": [
+		"isDirty",
+		"lastUpdated",
+		"lastUpdatedUser"
+	]
+}
