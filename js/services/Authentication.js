@@ -13,8 +13,8 @@ function ($rootScope, $http, AUTH_EVENT) {
         login: function (user) {
             var authMessage = null;
             $http({
-                url: '/Home/getUser',
-                //url: '/data/user.json',
+                //url: '/Home/getUser',
+                url: '/data/user.json',
                 method: 'POST',
                 timeout: 1000,
                 data: {

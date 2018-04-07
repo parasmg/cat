@@ -24,9 +24,13 @@ function ($q, $rootScope, $scope, $log, AppSupport, DataFactory, displayHelper, 
         
         $log.log('Got Test Data For -', testCatalogCd);
         
-        testSections = JSON.parse(response[0].data);
-        fields = JSON.parse(response[1].data);
-        hValues = JSON.parse(response[2].data);
+
+        // testSections = JSON.parse(response[0].data);
+        // fields = JSON.parse(response[1].data);
+        // hValues = JSON.parse(response[2].data);
+        testSections = response[0].data;
+        fields = response[1].data;
+        hValues = response[2].data;
         
         testSections = displayHelper.addEmptyFieldsToSections(testSections); //all an empty fields[] to each test section later populated by new fields.
 

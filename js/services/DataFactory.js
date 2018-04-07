@@ -74,19 +74,19 @@
         },
 
         getTestFields: function (test_catalog_cd) {
-            return $http.get('/Home/getTestDetails?test_catalog_cd=' + test_catalog_cd)
-            //return $http.get('/data/TestFields.json')
+            //return $http.get('/Home/getTestDetails?test_catalog_cd=' + test_catalog_cd)
+            return $http.get('/data/TestFields.json')
             
         },
 
         getTestHFields: function (test_catalog_cd) {
-            return $http.get('/Home/getHFields?test_catalog_cd=' + test_catalog_cd)
-            //return $http.get('/data/H-Fields.json')
+            //return $http.get('/Home/getHFields?test_catalog_cd=' + test_catalog_cd)
+            return $http.get('/data/H-Fields.json')
         },
 
         getTestDisplaySections: function (test_catalog_cd) {
-            return $http.get('/Home/getTestDisplaySections?test_catalog_cd=' + test_catalog_cd);
-            //return $http.get('/data/Sections.json')
+            //return $http.get('/Home/getTestDisplaySections?test_catalog_cd=' + test_catalog_cd);
+            return $http.get('/data/Sections.json')
         },
 
         getTestFieldsBySectionAndTestID: function (testId, sectionId) {
