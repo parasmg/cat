@@ -498,19 +498,4 @@
         "field_value_is_hidden": false,
         "section_name": "specimen_info",
         "section_display_name": "Specimen and Collection Information"
-    },
-    {
-        "test_id": 1,
-        "test_catalog_cd": 16268,
-        "section_id": 2,
-        "field_id": 11,
-        "list_id": 0,
-        "field_name": "patient_specimen_prep",
-        "field_display_name": "Patient Specimen Preparation",
-        "field_is_visible": "True",
-        "field_type": 1,
-        "field_is_active": 0,
-        "value_id": 26,
-        "list_display_sequence": 0,
-        "cerner_value_text": "This is a test.  This is only a test.  Please do not adjust your television settings.",
-        "override_value_text": "u003cpu003eu003ca href="http: //pathintranet/LIS/nurseprepedit/"u003ehttp://pathintranet/LIS/nurseprepedit/u003c/au003eu003c/pu003ernu003cpu003eThis is where you go to u003cstrongu003eformatu003c/strongu003e u003cemu003etextu003c/emu003eu003c/pu003e","field_value_is_overridden":true,"field_value_is_hidden":false,"section_name":"specimen_info","section_display_name":"Specimen and Collection Information"},{"test_id":1,"test_catalog_cd":16268,"section_id":2,"field_id":12,"list_id":0,"field_name":"specimen_volume_preferred","field_display_name":"Specimen Volume – Preferred","field_is_visible":"True","field_type":1,"field_is_active":0,"value_id":27,"list_display_sequence":0,"cerner_value_text":"1000 ml u003cbru003eadults preferred","override_value_text":"10 ml u003cbru003eadults preferred","field_value_is_overridden":false,"field_value_is_hidden":false,"section_name":"specimen_info","section_display_name":"Specimen and Collection Information"},{"test_id":1,"test_catalog_cd":16268,"section_id":2,"field_id":13,"list_id":0,"field_name":"specimen_volume_minimum","field_display_name":"Minimum Specimen Volume","field_is_visible":"True","field_type":1,"field_is_active":0,"value_id":28,"list_display_sequence":0,"cerner_value_text":"10 ml minimum cerner","override_value_text":"15 ml minimum non cerner","field_value_is_overridden":true,"field_value_is_hidden":false,"section_name":"specimen_info","section_display_name":"Specimen and Collection Information"},{"test_id":1,"test_catalog_cd":16268,"section_id":3,"field_id":14,"list_id":0,"field_name":"reference_range","field_display_name":"Reference Range","field_is_visible":"True","field_type":4,"field_is_active":0,"value_id":0,"list_display_sequence":0,"cerner_value_text":null,"override_value_text":null,"field_value_is_overridden":false,"field_value_is_hidden":false,"section_name":"result_info","section_display_name":"Result Information"}] 
+    }] 
