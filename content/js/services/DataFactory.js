@@ -44,7 +44,7 @@
 
             $http({
                 method: 'GET',
-                url: '/data/SearchScopeMin.json'
+                url: '/content/data/SearchScopeMin.json'
             }).then(function (response) {
                 results = response.data.SearchScope
                 for (i = 0; i < results.length; i++) {
@@ -75,18 +75,18 @@
 
         getTestFields: function (test_catalog_cd) {
             //return $http.get('/Home/getTestDetails?test_catalog_cd=' + test_catalog_cd)
-            return $http.get('/data/TestFields1.json')
+            return $http.get('content/data/TestFields.json')
 
         },
 
         getTestHFields: function (test_catalog_cd) {
-            return $http.get('/Home/getHFields?test_catalog_cd=' + test_catalog_cd)
-            //return $http.get('/data/H-Fields.json')
+            //return $http.get('/Home/getHFields?test_catalog_cd=' + test_catalog_cd)
+            return $http.get('content/data/H-Fields.json')
         },
 
         getTestDisplaySections: function (test_catalog_cd) {
-            return $http.get('/Home/getTestDisplaySections?test_catalog_cd=' + test_catalog_cd);
-            //return $http.get('/data/Sections.json')
+            //return $http.get('/Home/getTestDisplaySections?test_catalog_cd=' + test_catalog_cd);
+            return $http.get('content/data/Sections.json')
         },
 
         getTestFieldsBySectionAndTestID: function (testId, sectionId) {
