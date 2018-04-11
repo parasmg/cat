@@ -1,0 +1,117 @@
+﻿<div class="container-fluid  tab-content">
+    <div class="row">
+
+        <div class="col">
+            <div class="card mt-3" role="tabpanel">
+
+                <div class="card-header text-white bg-secondary">
+                    <h5>{{sectionInfo.section_display_name}}</h5>
+                    <span>
+                        <button type="button" ng-click="reloadSection(sectionInfo)" class="btn btn-light btn-sm">Edit</button>
+                    </span>
+                </div>
+
+                <div class="card-body">
+                    <div class="row pt-2 pb-2">
+                        <div class="col-3 bg-secondary text-white  p-2">Field Name</div>
+                        <div class="col-3 bg-secondary text-white  p-2">Value From Cerner</div>
+                        <div class="col-3 bg-secondary text-white  p-2">Overridden Value</div>
+                        <div class="col-3 bg-secondary text-white  p-2">Controls</div>
+                    </div>
+                    <div class="row" ng-repeat="field in sectionInfo.fields">
+
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+
+                            <div class="row" ng-if="field.field_type == 1 || field.field_type == 2 || field.field_type == 3">
+                                <!--
+                                    If the field is a list text or rich
+                                    'text': 1,
+                                    'list': 2,
+                                    'rich-text': 3,
+                                    'h-list': 4
+                                -->
+                                <div class="col-lg-3 col-md-3 col-sm-12">
+                                    <span>
+                                        <strong>
+                                        <text-edit my-object="field" my-key="field_display_name" my-value="field.field_display_name">
+                                        </text-edit>
+                                        </strong>
+                                    </span>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12" ng-if="field.field_type == 1">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-12" style="word-wrap: break-word; vertical-align:middle;">
+                                            <span ng-bind-html="field.cerner_value_text"></span>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12" style="word-wrap: break-word; vertical-align: middle;">
+                                            <text-edit my-object="field" my-key="override_value_text" my-value="field.override_value_text">
+                                            </text-edit>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12" ng-if="field.field_type == 2">
+                                    <div class="row" ng-repeat="listItem in field.list | orderBy:list_display_sequence">
+                                        <div class="col-lg-6 col-md-6 col-sm-12" style="word-wrap: break-word;" ng-bind-html="listItem.cerner_value_text">
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-12" style="word-wrap: break-word;" ng-bind-html="listItem.override_value_text">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2"> <!-- This row is for spacing -->
+                                        <div class="col-lg-6 col-md-6 col-sm-12" style="word-wrap: break-word;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12" ng-if="field.field_type == 3">
+                                    <div class="row">
+                                        <div class="col" style="word-wrap: break-word; vertical-align:middle;" ng-bind-html="field.cerner_value_text">
+                                        </div>
+                                        <div class="col" style="word-wrap: break-word; vertical-align: middle;">
+                                          <rich-edit my-object="field" my-key="override_value_text" my-value="field.override_value_text"></rich-edit>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Text, List or Rich Field-->
+                                <p>
+                                    &nbsp;
+                                </p>
+                            </div>
+                            <!--all other fields-->
+                            <div class="row" ng-if="field.field_type == 4">
+
+                                <div id="" class="col-lg-12 col-md-12 col-sm-12">
+                                    <span>
+                                        <strong>{{field.field_display_name}}</strong>
+                                    </span>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="col-lg-12" ng-repeat="hValue in field.h_list | orderBy: 'h_list_display_sequence'">
+                                        <div class="row" style="word-wrap: break-word; vertical-align:middle;">
+                                            <div class="col-lg-12 col-md-12 col-sm-12" ng-hide="field.h_list[$index-1].dta_name === field.h_list[$index].dta_name">
+                                                <hr />
+                                                <strong>{{hValue.dta_name}}</strong>
+                                            </div>
+
+                                            <div class="col-lg-12 col-md-12 col-sm-12" style="word-wrap: break-word; vertical-align: middle;">
+                                                {{hValue.reference_range}}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <pre>{{ field[$index-1] | json }}</pre>
+                            </div>
+                            <!--h-list Field-->
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--<pre>{{ testSections | json }}</pre>-->
+            </div>
+
+        </div>
+    </div>
+
+</div>

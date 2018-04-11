@@ -1,0 +1,122 @@
+﻿
+<div class="container-fluid" ng-if="!connected">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="well">
+                <h1>
+                    Something went wrong. <br>
+                    Could not connect to server. Please try again later.
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    <a href="" ng-click="editDetails()">Edit This Test</a>
+</p>
+<div class="container-fluid" ng-if="connected">
+    <div class="row">
+        <div class="col">
+            <div class="card box-shadow">
+                <div class="card-body">
+
+                    <!--Test Name Begin-->
+                    <h2 ng-if="!globalTestInfo.field_value_is_overridden">
+                        {{globalTestInfo.cerner_value_text}}
+                    </h2>
+                    <h2 ng-if="!globalTestInfo.field_value_is_overridden">
+                        {{globalTestInfo.override_value_text}}
+                    </h2>
+                    <!--Test Name End-->
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12" ng-repeat="section in testSections | orderBy: 'section_display_sequence'">
+                            <div class="card mt-3 box-shadow">
+                                <div class="card-header text-white bg-secondary">
+                                    <h5>{{section.section_display_name}}</h5>
+                                </div>
+                                <div class="card-body">
+
+                                    <!--BEGIN : If fields is NOT available-->
+                                    <span ng-if="section.fields.length == 0">
+                                        <strong>No Information Available </strong>
+                                    </span>
+                                    <!--END : If fields is NOT available-->
+
+                                    <div class="col" ng-repeat="field in section.fields">
+                                        <!--BEGIN : row if field is NOT an h list-->
+                                        <div class="row" ng-if="field.field_type < 4">
+                                            <div id="" class="col-lg-4 col-md-4 col-sm-4">
+                                                <span ng-hide="section.fields[$index-1].field_display_name === section.fields[$index].field_display_name">
+                                                    <strong>{{field.field_display_name}}</strong>
+                                                </span>
+                                            </div>
+
+                                            <div class="col-lg-8 col-md-8 col-sm-8" ng-if="field.field_type == 2">
+                                                <div class="row" ng-repeat="listItem in field.list | orderBy:list_display_sequence">
+
+                                                    <div class="col" style="word-wrap: break-word;"
+                                                         ng-bind-html="listItem.cerner_value_text"
+                                                         ng-if="!listItem.field_value_is_overridden">
+                                                    </div>
+
+                                                    <div class="col" style="word-wrap: break-word;"
+                                                         ng-bind-html="listItem.override_value_text"
+                                                         ng-if="!(listItem.override_value_text === null || !listItem.field_value_is_overridden)">
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-8 col-md-8 col-sm-8" ng-if="field.field_type == 1 || field.field_type == 3">
+                                                <div class="row">
+                                                    <div id=" " class=" col" style="word-wrap: break-word; vertical-align:middle;"
+                                                         ng-bind-html="field.cerner_value_text"
+                                                         ng-if="!field.field_value_is_overridden">
+                                                    </div>
+
+                                                    <div class="col" style="word-wrap: break-word; vertical-align: middle;"
+                                                         ng-if="!(field.override_value_text === null || !field.field_value_is_overridden)"
+                                                         ng-bind-html="field.override_value_text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p>
+                                                &nbsp;
+                                            </p>
+                                        </div>
+                                        <!--END : row if field is NOT an h list-->
+
+                                        <!--BEGIN : row if field IS an h list-->
+                                        <div class="row" ng-if="field.field_type == 4">
+                                            <div id="" class="col-lg-12 col-md-12 col-sm-12">
+                                                <span ng-if="!(section.fields[$index-1].field_display_name === section.fields[$index].field_display_name)">
+                                                    <strong>{{field.field_display_name}}</strong>
+                                                </span>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                <div class="col-lg-12" ng-repeat="hValue in field.h_list | orderBy: 'h_list_display_sequence'">
+                                                    <div class="row" style="word-wrap: break-word; vertical-align:middle;">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" ng-hide="field.h_list[$index-1].dta_name === field.h_list[$index].dta_name">
+                                                            <hr />
+                                                            <strong>{{hValue.dta_name}}</strong>
+                                                        </div>
+
+                                                        <div class="col-lg-12 col-md-12 col-sm-12" style="word-wrap: break-word; vertical-align: middle;">
+                                                            {{hValue.reference_range}}
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--END : row if field IS an h list-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

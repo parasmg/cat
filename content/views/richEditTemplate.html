@@ -1,0 +1,33 @@
+<div class="card" ng-show="!rich.editMode">
+
+    <div class="card-body"
+         ng-model="rich.myValue"
+         ng-bind-html="rich.myValue">
+    </div>
+
+    <div class="card-body">
+        <button type="button"
+                href=""
+                ng-click="rich.openeditor()"
+                class="btn btn-primary"
+                data-toggle="modal"
+                data-target="#richEditModal">
+            <i class="far fa-edit"></i>
+        </button>
+    </div>
+</div>
+
+<div class="card modal fade" tabindex="-1" role="dialog" aria-hidden="true" ng-show="rich.editMode" id="richEditModal">
+    <div class="card-body">
+        <textarea id="richTextEditor" ng-model="rich.myValue"></textarea>
+    </div>
+
+    <div class="card-body">
+        <a href="" ng-click="rich.save()" data-dismiss="modal" class="card-link">Save Edits</a>
+    </div>
+</div>
+
+
+
+
+

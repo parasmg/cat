@@ -1,0 +1,41 @@
+﻿<div class="input-group input-group-lg">
+    <input type="text"
+           class="form-control"
+           aria-label="Main Search, Search for a test"
+           placeholder="{{prompt}}"
+           ng-keydown="selected=false"
+           ng-keyup="$event.keyCode == 13 ? handleSearchClick() : null"
+           ng-model="model">
+
+    <div class="input-group-append">
+        <button type="button" class="btn btn-outline-secondary" ng-click="handleSearchClick()">Search</button>
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Search By Letter</a>
+            <div role="separator" class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">All Tests</a>
+        </div>
+    </div>
+</div>
+ 
+
+
+<ul class="list-group">
+    <li ng-repeat="item in items | filter: model track by $index"
+        ng-click="handleSelection(item[subtitle], item[title], item[synonyms])"
+        style="cursor: pointer;max-height:200px; overflow-y: auto;"
+        ng-class="{active:isCurrent($index)}"
+        ng-mouseenter="setCurrent($index)"
+        ng-hide="!model.length || selected" class="list-group-item">
+        <div class="">
+            <a href="#" class="list-group-item btn-outline-light btn-light">
+                <h4 class="text-muted card-title" ng-bind-html="item[title]"></h4>
+                <p class="text-muted card-text" ng-bind-html="item[synonyms]"></p>
+            </a>
+        </div>
+    </li>
+</ul>
+
+
