@@ -74,8 +74,8 @@
         },
 
         getTestFields: function (test_catalog_cd) {
-            return $http.get('/Home/getTestDetails?test_catalog_cd=' + test_catalog_cd)
-            //return $http.get('/data/TestFields.json')
+            //return $http.get('/Home/getTestDetails?test_catalog_cd=' + test_catalog_cd)
+            return $http.get('/data/TestFields1.json')
 
         },
 
