@@ -3,6 +3,7 @@
         "ui.router"
         , "ui.router.stateHelper"
         , "ngSanitize"
+        , "ui.tinymce"
     ]);
 
 

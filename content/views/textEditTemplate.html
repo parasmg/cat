@@ -2,13 +2,13 @@
    class="text-primary"
    href=""
    ng-click="txt.openeditor()"
-   ng-model="txt.myValue">
+   ng-model="txt.myValue" data-toggle="tooltip" data-html="true" data-placement="top" title="Tooltip on top">
     {{txt.myValue}}
 </a>
 <a ng-if="!txt.editMode && !txt.myValue"
    class="text-primary font-italic"
    href=""
-   ng-click="txt.openeditor()">
+   ng-click="txt.openeditor()" data-toggle="tooltip" data-html="true" data-placement="top" title="Tooltip on top">
     empty
 </a>
 
@@ -19,7 +19,7 @@
                 data-placement="left"
                 class="btn btn-outline-success"
                 type="button"
-                title="Tooltip on left"
+                title="Save"
                 ng-click="txt.save()">
             <i class="far fa-check-circle"></i>
         </button>
@@ -27,7 +27,7 @@
                 data-placement="left"
                 class="btn btn-outline-danger"
                 type="button"
-                title="Tooltip on left"
+                title="Cancel"
                 ng-click="txt.cancel()">
             <i class="far fa-times-circle"></i>
         </button>

@@ -1,4 +1,4 @@
-<div class="card" ng-show="!rich.editMode">
+<div class="card border-primary" ng-show="!rich.editMode">
 
     <div class="card-body"
          ng-model="rich.myValue"
@@ -7,25 +7,35 @@
 
     <div class="card-body">
         <button type="button"
-                href=""
                 ng-click="rich.openeditor()"
-                class="btn btn-primary"
+                class="btn btn-outline-primary"
                 data-toggle="modal"
-                data-target="#richEditModal">
-            <i class="far fa-edit"></i>
+                data-target="#{{rich.myObject.field_name}}RichEditModal">
+            <i class="far fa-edit"></i> Edit
         </button>
     </div>
 </div>
 
-<div class="card modal fade" tabindex="-1" role="dialog" aria-hidden="true" ng-show="rich.editMode" id="richEditModal">
-    <div class="card-body">
-        <textarea id="richTextEditor" ng-model="rich.myValue"></textarea>
-    </div>
-
-    <div class="card-body">
-        <a href="" ng-click="rich.save()" data-dismiss="modal" class="card-link">Save Edits</a>
+<div class="modal fade" id="{{rich.myObject.field_name}}RichEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{rich.myObject.field_display_name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" ng-click="rich.cancel()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <textarea ui-tinymce="tinymceOptions" id="richTextEditor" ng-model="rich.myValue"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success" ng-click="rich.save()" data-dismiss="modal"><i class="far fa-check-circle"></i></button>
+                <button type="button" class="btn btn-outline-danger" ng-click="rich.cancel()" data-dismiss="modal"><i class="far fa-times-circle"></i></button>
+            </div>
+        </div>
     </div>
 </div>
+
 
 
 

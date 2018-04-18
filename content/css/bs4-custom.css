@@ -29,7 +29,11 @@
 }
 
 
-@media (min-width: 1600px) {
+
+
+
+
+@media (min-width: 1200px) {
     .navbar-brand,
     .navbar-nav li a {
         line-height: 70px;
@@ -37,4 +41,11 @@
         padding-top: 0;
         font-size: 1.2em;
     }
+}
+
+@media (min-width: 768px) {
+  .modal-xl {
+    width: 90%;
+    max-width:1200px;
+  }
 }

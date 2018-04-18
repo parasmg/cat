@@ -1,0 +1,75 @@
+﻿
+<div class="row" ng-repeat="listItem in lst.myObject.list | orderBy:list_display_sequence">
+    <div class="col-lg-6 col-md-6 col-sm-12" style="word-wrap: break-word;" ng-bind-html="listItem.cerner_value_text">
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 border-left" style="word-wrap: break-word;" ng-bind-html="listItem.override_value_text">
+    </div>
+</div>
+
+
+<div class="card-body">
+    <button type="button"
+            ng-click="lst.openeditor()"
+            class="btn btn-outline-primary"
+            data-toggle="modal"
+            data-target="#{{lst.myObject.field_name}}ListEditModal">
+        <i class="far fa-edit"></i> Edit
+    </button>
+</div>
+
+<div class="modal fade" id="{{lst.myObject.field_name}}ListEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title" id="{{lst.myObject.field_name}}ListModalLabel">{{lst.myObject.field_display_name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" ng-click="lst.cancel()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+
+            <div class="modal-body">
+
+                <div class="row bg-secondary text-white mb-2 p-2">
+                    <div class="col-lg-3 col-md-3 col-sm-6 " style="word-wrap: break-word;">
+                        Current Value From Cerner
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 " style="word-wrap: break-word;">
+                        Override Value
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6" style="word-wrap: break-word;">
+                        Control
+                    </div>
+                </div>
+
+                <div class="row m-1" ng-repeat="listItem in lst.myObject.list | orderBy:list_display_sequence">
+                    <div class="col-lg-3 col-md-3 col-sm-6" style="word-wrap: break-word;" ng-bind-html="listItem.cerner_value_text">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12" style="word-wrap: break-word;" ng-bind-html="listItem.override_value_text">
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6" style="word-wrap: break-word;">
+
+                        
+                            <label class="btn btn-outline-primary" ng-class="{active:listItem.field_value_is_hidden}">
+                                <input type="checkbox" ng-model="listItem.field_value_is_hidden"> {{listItem.field_value_is_hidden ? 'Hidden' : 'Hide'}}
+                            </label>
+                            <label class="btn btn-outline-primary" ng-class="{active:listItem.field_value_is_overridden}">
+                                <input type="checkbox" ng-model="listItem.field_value_is_overridden"> {{listItem.field_value_is_overridden ? 'Overridden' : 'Override'}}
+                            </label>
+                        <div class="btn-group btn-group-toggle btn-group-sm" data-toggle="buttons">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-success" ng-click="lst.save()" data-dismiss="modal"><i class="far fa-check-circle"></i></button>
+                <button type="button" class="btn btn-outline-danger" ng-click="lst.cancel()" data-dismiss="modal"><i class="far fa-times-circle"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

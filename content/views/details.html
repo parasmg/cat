@@ -44,9 +44,9 @@
 
                                     <div class="col" ng-repeat="field in section.fields">
                                         <!--BEGIN : row if field is NOT an h list-->
-                                        <div class="row" ng-if="field.field_type < 4">
+                                        <div class="row" ng-if="(field.field_type == 1 || field.field_type == 2 || field.field_type == 3) && !(field.field_is_hidden)">
                                             <div id="" class="col-lg-4 col-md-4 col-sm-4">
-                                                <span ng-hide="section.fields[$index-1].field_display_name === section.fields[$index].field_display_name">
+                                                <span ng-if="!(section.fields[$index-1].field_display_name === section.fields[$index].field_display_name)">
                                                     <strong>{{field.field_display_name}}</strong>
                                                 </span>
                                             </div>
@@ -85,9 +85,8 @@
                                             </p>
                                         </div>
                                         <!--END : row if field is NOT an h list-->
-
                                         <!--BEGIN : row if field IS an h list-->
-                                        <div class="row" ng-if="field.field_type == 4">
+                                        <div class="row" ng-if="field.field_type == 4 && !(field.field_is_hidden)">
                                             <div id="" class="col-lg-12 col-md-12 col-sm-12">
                                                 <span ng-if="!(section.fields[$index-1].field_display_name === section.fields[$index].field_display_name)">
                                                     <strong>{{field.field_display_name}}</strong>

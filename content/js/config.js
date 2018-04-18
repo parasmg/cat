@@ -62,7 +62,10 @@
 
     }])
 
-
 catalogEditor.config(['$logProvider', function ($logProvider) {
     $logProvider.debugEnabled(true);
 }]);
+
+catalogEditor.config(['$compileProvider', function ($compileProvider) {
+    $compileProvider.debugInfoEnabled(true);
+}])

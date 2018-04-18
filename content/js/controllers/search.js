@@ -2,9 +2,14 @@
 
 function ($scope, $http, DataFactory, $state, $timeout) {
 
-    $scope.items = DataFactory.getSearchScope();
+    DataFactory.getSearchScope().then(function (result) {
+        $scope.items = result.data.SearchScope;
+        console.log($scope.items.length);
+    });
+    
     $scope.selectedCatalogCd = '';
     $scope.searchString = '';
+
     // Get our stored data, or, a blank array;
     $scope.searchResults = DataFactory.get() || [];
     
@@ -26,6 +31,7 @@ function ($scope, $http, DataFactory, $state, $timeout) {
                 remove special characters and html tags from the synonyms and check if the name 
                 or synonym contains the search string.
             */
+            
             $scope.searchResults = [];
             for (i = 0; i < $scope.items.length; i++) {
                 var synonyms = $scope.items[i].synonyms
@@ -34,6 +40,7 @@ function ($scope, $http, DataFactory, $state, $timeout) {
                     synonyms = synonyms.replace(/[^\w\s]/gi, '').toLowerCase();
                 }
                 var testName = $scope.items[i].test_name.toLowerCase();
+
                 if ((testName.indexOf($scope.searchString.toLowerCase()) > -1) || (synonyms.indexOf($scope.searchString) > -1)) {
                     var searchItem = $scope.items[i];
                     $scope.searchResults.push(searchItem);
@@ -42,6 +49,8 @@ function ($scope, $http, DataFactory, $state, $timeout) {
             // Store the data;
             DataFactory.set($scope.searchResults);
             $scope.searchResults = [];
+
+            console.log("Loaded");
 
             if (!$state.is('search')) {
                 $state.go('search');

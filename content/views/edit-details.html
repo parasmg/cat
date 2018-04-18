@@ -15,9 +15,9 @@
 
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12">
-            <ul class="nav nav-pills" role="tablist">
+            <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item" ng-repeat="section in testSections" role="presentation">
-                    <a class="nav-link" href="" ng-click="editSection(section.section_id, $event)" role="tab" data-toggle="tab">{{section.section_display_name}}</a>
+                    <a class="nav-link" href="" ng-click="editSection(section.section_id, $event)" role="tab" data-toggle="tab"><span class="h5">{{section.section_display_name}}</span></a>
                 </li>
             </ul>
         </div>
