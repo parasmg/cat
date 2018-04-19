@@ -29,7 +29,7 @@
                 defer.resolve(response)
                 t1 = performance.now();
                 console.log("Search Scope - JSON downloaded and parsed in " + (t1 - t0).toFixed(2) + " milliseconds.");
-                
+
             }, function (response) {
                 defer.reject(response);
                 results = response.status;
@@ -38,19 +38,19 @@
         },
 
         getTestFields: function (test_catalog_cd) {
-            return $http.get('/Home/getTestDetails?test_catalog_cd=' + test_catalog_cd)
-            //return $http.get('/data/TestFields.json')
+            //return $http.get('/Home/getTestDetails?test_catalog_cd=' + test_catalog_cd)
+            return $http.get('content/data/TestFields.json')
 
         },
 
         getTestHFields: function (test_catalog_cd) {
-            return $http.get('/Home/getHFields?test_catalog_cd=' + test_catalog_cd)
-            //return $http.get('/data/H-Fields.json')
+            //eturn $http.get('/Home/getHFields?test_catalog_cd=' + test_catalog_cd)
+            return $http.get('content/data/H-Fields.json')
         },
 
         getTestDisplaySections: function (test_catalog_cd) {
-            return $http.get('/Home/getTestDisplaySections?test_catalog_cd=' + test_catalog_cd);
-            //return $http.get('/data/Sections.json')
+            //return $http.get('/Home/getTestDisplaySections?test_catalog_cd=' + test_catalog_cd);
+            return $http.get('content/data/Sections.json')
         },
 
         getTestFieldsBySectionAndTestID: function (testId, sectionId) {
